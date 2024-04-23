@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>63</y>
+      <w>385</w>
+      <h>245</h>
+    </coordinates>
+    <panel_attributes>Partita
+--
+- codice : long
+- nextCodice : long
+- squadraOspitante : String
+- squadraOspite : String
+- citta : String
+- distanza : int
+--
++ Partita (squadraOspitante : String, squadraOspite : String, citta : String, distanza : int)
++ Partita (partita : Partita)
++ setSquadraOspitante (squadraOspitante : String)
++ setSquadraOspite (squadraOspite : String)
++ setCitta (citta : String)
++ setDistanza (distanza : int)
++ getCodice ( ) : long
++ getSquadraOspitante ( ) : String
++ getSquadraOspite ( ) : String
++ getCitta ( ) : String
++ getDistanza ( ) : int
++ getRimborso ( ) : int
++ toString ( ) : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>518</x>
+      <y>63</y>
+      <w>399</w>
+      <h>322</h>
+    </coordinates>
+    <panel_attributes>Arbitro
+--
+- nome : String
+- cognome : String
+- categoria : String
+- password : String
+- eta : int
+- codice : long
+- nextCodice : long
+--
++ Arbitro (nome : String, cognome : String, categoria : String, passoword : String, eta : int)
++ Arbitro (arbitro : Arbitro)
++ setPartita (partita : Partita)
++ eliminaPartita (codice : int)
++ visualizzaPartite ( ) : ArrayList&lt;Partita&gt;
++ getnPartite ( ) : int
++ setNome (nome : String)
++ getPassoword ( ) : String
++ setPassword ( ) 
++ setCognome ( )
++ setCategoria ( )
++ setEta ( )
++ getNome ( ) : String
++ getCognome ( ) : String
++ getCategoria ( ) : String
++ getEta ( ) : int
++ getCodice ( ) : long
++ toString ( ) : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>378</x>
+      <y>112</y>
+      <w>154</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>- partite: ArrayList&lt;Partita&gt;
+lt=&lt;&lt;&lt;&lt;-
+0...N</panel_attributes>
+    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1127</x>
+      <y>280</y>
+      <w>294</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Sezione
+--
++ Sezione ( )
++ Sezione (sezione : Sezione)
++ aggiungiArbitro (arbitro : Arbitro)
++ eliminaArbitro (nome : String, cognome : String, codice : int)
++ aggiungiDesignatore (designatore : Designatore)
++ eliminaDesignatore (nome : String, cognome : String, codice int)
++ designaPartita (codice : int, partita : Partita)
++ eliminaPartita (codiceArbitro : int, codicePartita : int)
++ getArbitro (codice : int) : Arbitro
++ getDesignatore (codice : int) : Designatore
++ visualizzaArbitri ( ) : ArrayList&lt;Arbitro&gt;
++ visualizzaDesignatori ( ) : ArrayList&lt;Designatore&gt;
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>406</y>
+      <w>259</w>
+      <h>203</h>
+    </coordinates>
+    <panel_attributes>Designatore
+--
+- codice : long
+- nextCodice : long
+- nome : String;
+- cognome : String;
+- password : String
+--
++ Designatore (nome : String, cognome : String, password : String)
++ Designatore (designatore : Designatore)
++ getPassword ( ) : String
++ setPassword(password : String)
++ getNome ( ) : String
++ setNome (nome : String)
++ getCognome ( ) : String
++ setCognome (cognome : String)
++ getCodice ( ) : long
++ toString ( ) : String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>364</y>
+      <w>231</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>- arbitri : ArrayList&lt;Arbitro&gt;
+lt=&lt;&lt;&lt;&lt;-
+0...N</panel_attributes>
+    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>392</y>
+      <w>231</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>- designatori : ArrayList&lt;Designatore&gt;
+lt=&lt;&lt;&lt;&lt;-
+0...N</panel_attributes>
+    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>
