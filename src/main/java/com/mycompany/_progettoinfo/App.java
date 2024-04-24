@@ -8,7 +8,6 @@ import eccezioni.*;
 import java.io.EOFException;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import utility.ConsoleInput;
@@ -56,7 +55,7 @@ public class App {
             switch(voceScelta){
                 case 0 -> System.out.println("Arrivederci");
                 //accedi come arbitro
-                case 1 -> { 
+                case 1 -> {
                     do{
                         
                         try{
@@ -702,7 +701,7 @@ public class App {
         String squadraOspitante;
         String squadraOspite;
         String citta;
-        String day;
+        String[] day;
         LocalDate giorno;
         int distanza;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("GG/MM/AAAA");
@@ -719,9 +718,9 @@ public class App {
                     squadraOspitante = datiPartita[0];
                     squadraOspite = datiPartita[1];
                     citta = datiPartita[2];
-                    distanza = Integer.parseInt(datiPartita[3]);
-                    day = datiPartita[4];
-                    giorno = LocalDate.parse(day, formatter);
+                    distanza = Integer.parseInt(datiPartita[4]);
+                    day = datiPartita[3].split("-");
+                    giorno = LocalDate.of(Integer.parseInt(day[0]), Integer.parseInt(day[1]), Integer.parseInt(day[2]));
                     Partita partita = new Partita(squadraOspitante, squadraOspite, citta, giorno, distanza);
                     sezione.designaPartita((int) arbitro.getCodice(), partita);
                 }while(true);
