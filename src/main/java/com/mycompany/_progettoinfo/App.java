@@ -4,11 +4,11 @@
 
 package com.mycompany._progettoinfo;
 
+import eccezioni.EmptyStringException;
 import eccezioni.*;
 import java.io.EOFException;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import utility.ConsoleInput;
 import utility.Menu;
@@ -139,6 +139,9 @@ public class App {
                                                                     nome=input.readString();
                                                                     System.out.println("inserisci il nuovo nome");
                                                                     String nuovoNome=input.readString();
+                                                                    if(nuovoNome.isEmpty()){
+                                                                        throw new EmptyStringException();
+                                                                    }
                                                                     if(elencoArbitri.get(i).getNome().equals(nome)){
                                                                         elencoArbitri.get(i).setNome(nuovoNome);
                                                                         System.out.println("modifica avvenuta con successo");
@@ -150,6 +153,9 @@ public class App {
                                                                 catch(InvalidNameException e){
                                                                     System.out.println("ERROR InvalidNameException::il nome corrente non corrisponde");
                                                                 }
+                                                                catch(EmptyStringException e){
+                                                                    System.out.println("ERROR EmptyStringException::nuovo nome vuoto");
+                                                                }
                                                             }
                                                             case 2 -> {
                                                                 try{
@@ -157,6 +163,9 @@ public class App {
                                                                     cognome=input.readString();
                                                                     System.out.println("inserisci il nuovo cognome ");
                                                                     String nuovoCognome=input.readString();
+                                                                    if(nuovoCognome.isEmpty()){
+                                                                        throw new EmptyStringException();
+                                                                    }
                                                                     if(elencoArbitri.get(i).getCognome().equals(cognome)){
                                                                         elencoArbitri.get(i).setCognome(nuovoCognome);
                                                                         System.out.println("modifica avvenuta con successo");
@@ -167,6 +176,9 @@ public class App {
                                                                 }
                                                                 catch(InvalidSurnameException e){
                                                                     System.out.println("ERROR InvalidNameException::il cognome corrente non corrisponde");
+                                                                }
+                                                                catch(EmptyStringException e){
+                                                                    System.out.println("ERROR EmptyStringException::nuovo cognome vuoto");
                                                                 }
                                                                 break;
                                                             }
@@ -185,6 +197,9 @@ public class App {
                                                                     password=input.readString();
                                                                     System.out.println("inserisci la nuova password");
                                                                     String nuovaPassword=input.readString();
+                                                                    if(nuovaPassword.isEmpty()){
+                                                                        throw new EmptyStringException();
+                                                                    }
                                                                     if(elencoArbitri.get(i).getPassoword().equals(password)){
                                                                         elencoArbitri.get(i).setPassoword(nuovaPassword);
                                                                     }
@@ -194,6 +209,9 @@ public class App {
                                                                 }
                                                                 catch(InvalidPasswordException e){
                                                                     System.out.println("ERROR InvalidPasswordException::password corrente non valida");
+                                                                }
+                                                                catch(EmptyStringException e){
+                                                                    System.out.println("ERROR EmptyStringException::nuova password vuoto");
                                                                 }
                                                                 break;
                                                             }
@@ -347,7 +365,7 @@ public class App {
                                                 vociMenuModificaDesignatore[0]="0 -->\tEsci";
                                                 vociMenuModificaDesignatore[1]="1 -->\tModifica nome";
                                                 vociMenuModificaDesignatore[2]="2 -->\tModifica cognome";
-                                                vociMenuModificaDesignatore[3]="3 -->\tModifica profilo";
+                                                vociMenuModificaDesignatore[3]="3 -->\tModifica password";
                                                 Menu modificaProfiloDesignatore = new Menu(vociMenuModificaDesignatore);
                                                 sceltaMenuModificaDesignatore=modificaProfiloDesignatore.sceltaMenu();
                                                 
@@ -361,6 +379,9 @@ public class App {
                                                             nome=input.readString();
                                                             System.out.println("inserisci il nuovo nome");
                                                             String nuovoNome=input.readString();
+                                                            if(nuovoNome.isEmpty()){
+                                                                throw new EmptyStringException();
+                                                            }
                                                             if(elencoDesignatori.get(i).getNome().equals(nome)){
                                                                 elencoDesignatori.get(i).setNome(nuovoNome);
                                                                 System.out.println("modifica avvenuta con successo");
@@ -372,6 +393,9 @@ public class App {
                                                         catch(InvalidNameException e){
                                                             System.out.println("ERROR InvalidNameException::il nome corrente non corrisponde");
                                                         }
+                                                        catch(EmptyStringException e){
+                                                            System.out.println("ERROR EmptyStringException::nuovo nome vuoto");
+                                                        }
                                                     }
                                                     
                                                     case 2 -> {
@@ -380,6 +404,9 @@ public class App {
                                                             cognome=input.readString();
                                                             System.out.println("inserisci il nuovo cognome");
                                                             String nuovoCognome=input.readString();
+                                                            if(nuovoCognome.isEmpty()){
+                                                                throw new EmptyStringException();
+                                                            }
                                                             if(elencoDesignatori.get(i).getCognome().equals(cognome)){
                                                                 elencoDesignatori.get(i).setCognome(nuovoCognome);
                                                                 System.out.println("modifica avvenuta con successo");
@@ -391,6 +418,9 @@ public class App {
                                                         catch(InvalidSurnameException e){
                                                             System.out.println("ERROR InvalidNameException::il cognome corrente non corrisponde");
                                                         }
+                                                        catch(EmptyStringException e){
+                                                            System.out.println("ERROR EmptyStringException::nuovo cognome vuoto");
+                                                        }
                                                         break;
                                                     }
                                                     
@@ -400,6 +430,9 @@ public class App {
                                                             password=input.readString();
                                                             System.out.println("inserisci il nuovo cognome");
                                                             String nuovaPassword=input.readString();
+                                                            if(nuovaPassword.isEmpty()){
+                                                                throw new EmptyStringException();
+                                                            }
                                                             if(elencoDesignatori.get(i).getPassword().equals(password)){
                                                                 elencoDesignatori.get(i).setPassword(nuovaPassword);
                                                                 System.out.println("modifica avvenuta con successo");
@@ -409,7 +442,10 @@ public class App {
                                                             }
                                                         }
                                                         catch(InvalidSurnameException e){
-                                                            System.out.println("ERROR InvalidNameException::il cognome corrente non corrisponde");
+                                                            System.out.println("ERROR InvalidNameException::password corrente non corrisponde");
+                                                        }
+                                                        catch(EmptyStringException e){
+                                                            System.out.println("ERROR EmptyStringException::nuova password vuota");
                                                         }
                                                         break;
                                                     }
@@ -670,12 +706,7 @@ public class App {
             do{
                 rigaLetta=fileArbitro.fromFile();
                 datiArbitro=rigaLetta.split(";");
-                String nome=datiArbitro[0];
-                String cognome=datiArbitro[1];
-                String categoria=datiArbitro[2];
-                int eta=Integer.parseInt(datiArbitro[3]);
-                String passoword = datiArbitro[4];
-                arbitro=new Arbitro(nome, cognome, categoria, passoword, eta);
+                arbitro=new Arbitro(datiArbitro[0], datiArbitro[1], datiArbitro[2], datiArbitro[4], Integer.parseInt(datiArbitro[3]));
                 sezione.aggiungiArbitro(arbitro);
             }while(true);
         }
@@ -690,7 +721,6 @@ public class App {
         catch(FileException | IOException e){
             
         }
-        
     }
     
     public static void importMatch(ArrayList<Arbitro> elencoArbitri, Sezione sezione) {
@@ -698,13 +728,8 @@ public class App {
         String nomeFilePartite;
         String[] datiPartita;
         TextFile filePartite=null;
-        String squadraOspitante;
-        String squadraOspite;
-        String citta;
         String[] day;
         LocalDate giorno;
-        int distanza;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("GG/MM/AAAA");
 
         for (Arbitro arbitro : elencoArbitri) {
             try {
@@ -715,13 +740,9 @@ public class App {
                     if(rigaLettaPartite==null)
                         throw new EOFException();
                     datiPartita = rigaLettaPartite.split(";");
-                    squadraOspitante = datiPartita[0];
-                    squadraOspite = datiPartita[1];
-                    citta = datiPartita[2];
-                    distanza = Integer.parseInt(datiPartita[4]);
                     day = datiPartita[3].split("-");
                     giorno = LocalDate.of(Integer.parseInt(day[0]), Integer.parseInt(day[1]), Integer.parseInt(day[2]));
-                    Partita partita = new Partita(squadraOspitante, squadraOspite, citta, giorno, distanza);
+                    Partita partita = new Partita(datiPartita[0], datiPartita[1], datiPartita[2], giorno, Integer.parseInt(datiPartita[4]));
                     sezione.designaPartita((int) arbitro.getCodice(), partita);
                 }while(true);
                 
