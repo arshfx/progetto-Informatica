@@ -63,8 +63,27 @@ public class App {
                             nome=input.readString();
                             System.out.println("inserisci il tuo cognome");
                             cognome=input.readString();
-                            System.out.println("inserisci la tua password");
-                            password=input.readString();
+                            
+                            for(Arbitro arbitro : elencoArbitri){
+                                if(arbitro.getPassoword().equals(arbitro.getNome()+"_"+arbitro.getCognome())){
+                                    System.out.println("inserisci la vecchia password");
+                                    String vecchiPassword=input.readString();
+                                    if(vecchiPassword.equals(arbitro.getPassoword())){
+                                        System.out.println("imposta la tua nuova password");
+                                        password=input.readString();
+                                        Arbitro a=new Arbitro(arbitro.getNome(), arbitro.getCognome(), arbitro.getCategoria(), password, arbitro.getEta());
+                                        elencoArbitri.remove(arbitro);
+                                        elencoArbitri.add(a);
+                                        password=a.getPassoword();
+                                    }
+                                    else{
+                                        throw new InvalidPasswordException();
+                                    }
+                                    
+                                }
+                            }
+                            
+                            
                             
                             for(int i=0; i<elencoArbitri.size(); i++){
                                 if(elencoArbitri.get(i).getNome().equals(nome)){
@@ -239,6 +258,9 @@ public class App {
                         } 
                         catch (AuthorizedAccessException e){
                             System.out.println("ERROR AuthorizedAccessException::accesso negato");
+                        }
+                        catch(InvalidPasswordException e){
+                            System.out.println("ERROR InvalidPasswordException::vecchia password non valida");
                         }
                         
                         break;
@@ -529,7 +551,7 @@ public class App {
                                                     categoria=input.readString();
                                                     System.out.println("Inserisci l'eta");
                                                     eta=input.readInt();
-                                                    password="password";
+                                                    password=nome+"_"+cognome;
                                                     System.out.println("");
                                                     System.out.println("arbitro aggiunto con successo");
                                                     Arbitro arbitro=new Arbitro(nome, cognome, categoria, password, eta);
@@ -658,7 +680,7 @@ public class App {
         TextFile filePartite = null;
         
         try {
-            fileArbitro = new TextFile(nomeFile, 'W', true);
+            fileArbitro = new TextFile(nomeFile, 'W');
             
             for (Arbitro arbitro : elencoArbitri) {
                 datiArbitro = arbitro.getNome() + ";" + arbitro.getCognome() + ";" + arbitro.getCategoria() + ";" + arbitro.getEta() + ";" + arbitro.getPassoword();
