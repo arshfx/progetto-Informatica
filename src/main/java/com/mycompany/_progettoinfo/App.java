@@ -635,6 +635,14 @@ public class App {
                                             case 5 -> {
                                                 break;
                                             }
+                                            case 6 -> {
+                                                System.out.println("visualizza tutti gli arbitri");
+                                                for(Arbitro arbitro : elencoArbitri){
+                                                    
+                                                }
+                                                
+                                                
+                                            }
                                         }
                                     }while(sceltaMenuPresidente!=5);
                                 }

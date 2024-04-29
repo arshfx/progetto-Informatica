@@ -18,6 +18,7 @@ public class Partita {
     private String citta;
     private LocalDate giorno;
     private int distanza;
+    private int rimborso;
     
     public Partita(String squadraOspitante, String squadraOspite, String citta, LocalDate giorno, int distanza){
         codice=nextCodice;
@@ -82,7 +83,21 @@ public class Partita {
     }
     
     public int getRimborso(){
-        int rimborso=distanza;
+        String categoria = null;
+        int rimborso = 0;
+        switch(categoria){
+            case "giovanissimi", "allievi" -> rimborso=36;
+            case "juniores" -> rimborso=46;
+            case "terza categoria" -> rimborso=56;
+            case "seconda categoria" -> rimborso=66;
+            case "prima categoria" -> rimborso=76;
+            case "promozione" -> rimborso=86;
+            case "eccellenza" -> rimborso=96;
+            case "serie D" -> rimborso=106;
+            case "serie C" -> rimborso=116;
+            case "serie B" -> rimborso=126;
+            case "serie A" -> rimborso=136;
+        }
         return rimborso;
     }
     
